@@ -44,6 +44,19 @@
     h2 { color: #58a6ff; margin-top: 0; font-size: 1.3rem; }
     p { color: #8b949e; font-size: 0.95rem; line-height: 1.5; }
 
+    input {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #30363d;
+      background: #0d1117;
+      color: white;
+      margin-bottom: 10px;
+      outline: none;
+      width: 80%;
+      font-family: inherit;
+      text-align: center;
+    }
+
     button {
       display: block;
       width: 100%;
@@ -72,12 +85,12 @@
 
   <div class="card">
     <div id="badge" class="badge">SYSTEM LOCK: SAMIKSHA</div>
-    <h2 id="title">Stage 1: Identity Verification</h2>
-    <p id="description">Target confirmed: Samiksha. Clear all security clearance levels to unlock your custom reward.</p>
+    <h2 id="title">Stage 1: Access Passkey</h2>
+    <p id="description">To proceed, enter the secret passkey.</p>
     
     <div id="interactive-area">
-      <button onclick="nextLevel(1)">[A] Samiksha (Top Tier Personality)</button>
-      <button onclick="nextLevel(0)">[B] Random NPC</button>
+      <input type="text" id="answer-input" placeholder="Type passkey...">
+      <button onclick="checkPasskey()">Submit</button>
     </div>
 
     <p id="feedback"></p>
@@ -86,29 +99,33 @@
   <script>
     let currentLevel = 1;
 
+    function checkPasskey() {
+      const input = document.getElementById("answer-input").value.trim().toLowerCase();
+      const feedback = document.getElementById("feedback");
+
+      if (input === "samiksha") {
+        currentLevel = 2;
+        document.getElementById("title").innerText = "Stage 2: Priority Protocols";
+        document.getElementById("description").innerText = "What is the official rule for handling stress or a bad mood?";
+        document.getElementById("interactive-area").innerHTML = `
+          <button onclick="nextLevel(1)">[A] Good food, cold coffee & quality drama</button>
+          <button onclick="nextLevel(0)">[B] Overthinking at 2 AM</button>
+        `;
+        feedback.style.color = "#3fb950";
+        feedback.innerText = "> Passkey verified! Proceeding to Stage 2...";
+      } else {
+        feedback.style.color = "#f85149";
+        feedback.innerText = "> Access denied! Hint: Try typing your name!";
+      }
+    }
+
     function nextLevel(choice) {
       const title = document.getElementById("title");
       const description = document.getElementById("description");
       const area = document.getElementById("interactive-area");
       const feedback = document.getElementById("feedback");
 
-      if (currentLevel === 1) {
-        if (choice === 1) {
-          currentLevel = 2;
-          title.innerText = "Stage 2: Priority Protocols";
-          description.innerText = "What is the official rule for handling stress or bad mood?";
-          area.innerHTML = `
-            <button onclick="nextLevel(1)">[A] Good food, cold coffee & quality drama</button>
-            <button onclick="nextLevel(0)">[B] Overthinking at 2 AM</button>
-          `;
-          feedback.style.color = "#3fb950";
-          feedback.innerText = "> Level 1 Cleared. Proceeding to next layer...";
-        } else {
-          feedback.style.color = "#f85149";
-          feedback.innerText = "> Access Denied. Choose correctly!";
-        }
-      } 
-      else if (currentLevel === 2) {
+      if (currentLevel === 2) {
         if (choice === 1) {
           currentLevel = 3;
           title.innerText = "Stage 3: Reward Matrix";
