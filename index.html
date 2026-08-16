@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamanna Access Terminal</title>
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .card {
+      background: #161b22;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.8);
+      text-align: center;
+      max-width: 440px;
+      width: 100%;
+      border: 1px solid #30363d;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 4px;
+      background: #238636;
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      margin-bottom: 15px;
+    }
+
+    h2 { color: #58a6ff; margin-top: 0; font-size: 1.3rem; }
+    p { color: #8b949e; font-size: 0.95rem; line-height: 1.5; }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      background-color: #21262d;
+      color: #79c0ff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #30363d;
+      border-color: #58a6ff;
+    }
+
+    #feedback { margin-top: 15px; font-weight: bold; min-height: 20px; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div id="badge" class="badge">SYSTEM LOCK: TAMANNA</div>
+    <h2 id="title">Stage 1: Identity Scan</h2>
+    <p id="description">Target confirmed: Tamanna. Clear 3 quick security checks to override system lock.</p>
+    
+    <div id="interactive-area">
+      <button onclick="nextLevel(1)">[A] Tamanna (Chief Vibe Officer)</button>
+      <button onclick="nextLevel(0)">[B] Random Boring Human</button>
+    </div>
+
+    <p id="feedback"></p>
+  </div>
+
+  <script>
+    let currentLevel = 1;
+
+    function nextLevel(choice) {
+      const title = document.getElementById("title");
+      const description = document.getElementById("description");
+      const area = document.getElementById("interactive-area");
+      const feedback = document.getElementById("feedback");
+
+      if (currentLevel === 1) {
+        if (choice === 1) {
+          currentLevel = 2;
+          title.innerText = "Stage 2: Emergency Protocol";
+          description.innerText = "When life gets stressful or boring, what is Tamanna's ultimate survival move?";
+          area.innerHTML = `
+            <button onclick="nextLevel(1)">[A] Good food, gossips, & zero drama</button>
+            <button onclick="nextLevel(0)">[B] Overthinking & studying calculus</button>
+          `;
+          feedback.style.color = "#3fb950";
+          feedback.innerText = "> Stage 1 bypassed. Access level updated.";
+        } else {
+          feedback.style.color = "#f85149";
+          feedback.innerText = "> Error: Invalid input. Try being honest!";
+        }
+      } 
+      else if (currentLevel === 2) {
+        if (choice === 1) {
+          currentLevel = 3;
+          title.innerText = "Stage 3: Decision Matrix";
+          description.innerText = "Final Step: Choose your reward for clearing the system security.";
+          area.innerHTML = `
+            <button onclick="nextLevel(1)">[A] Coffee/Dessert date paid by me</button>
+            <button onclick="nextLevel(2)">[B] Unlimited tea/gossip session</button>
+          `;
+          feedback.style.color = "#3fb950";
+          feedback.innerText = "> Security override almost complete...";
+        } else {
+          feedback.style.color = "#f85149";
+          feedback.innerText = "> Access Denied: Incorrect protocol.";
+        }
+      }
+      else if (currentLevel === 3) {
+        document.getElementById("badge").innerText = "ACCESS GRANTED";
+        document.getElementById("badge").style.background = "#8957e5";
+        
+        title.innerText = "Tamanna's Clearance Pass 🏆";
+        description.innerText = "System successfully decrypted.";
+        area.innerHTML = `
+          <div style="background: #0d1117; padding: 15px; border-radius: 6px; border: 1px solid #30363d; text-align: left;">
+            <strong style="color: #79c0ff;">Reward Claim Code: #TAMANNA-VIP</strong><br><br>
+            <span style="color: #c9d1d9; font-size: 0.9rem;">1x Guaranteed treat/hangout pass unlocked.</span><br><br>
+            <em style="color: #8b949e; font-size: 0.85rem;">*Send a screenshot of this terminal to claim.*</em>
+          </div>
+        `;
+        feedback.style.color = "#3fb950";
+        feedback.innerText = "> Terminal Unlocked 100%.";
+      }
+    }
+  </script>
+</body>
+</html>
