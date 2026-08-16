@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tamanna Access Terminal</title>
+  <title>Samiksha Access Terminal</title>
   <style>
     body {
       background-color: #0d1117;
@@ -71,13 +71,13 @@
 <body>
 
   <div class="card">
-    <div id="badge" class="badge">SYSTEM LOCK: TAMANNA</div>
-    <h2 id="title">Stage 1: Identity Scan</h2>
-    <p id="description">Target confirmed: Tamanna. Clear 3 quick security checks to override system lock.</p>
+    <div id="badge" class="badge">SYSTEM LOCK: SAMIKSHA</div>
+    <h2 id="title">Stage 1: Identity Verification</h2>
+    <p id="description">Target confirmed: Samiksha. Clear all security clearance levels to unlock your custom reward.</p>
     
     <div id="interactive-area">
-      <button onclick="nextLevel(1)">[A] Tamanna (Chief Vibe Officer)</button>
-      <button onclick="nextLevel(0)">[B] Random Boring Human</button>
+      <button onclick="nextLevel(1)">[A] Samiksha (Top Tier Personality)</button>
+      <button onclick="nextLevel(0)">[B] Random NPC</button>
     </div>
 
     <p id="feedback"></p>
@@ -95,50 +95,50 @@
       if (currentLevel === 1) {
         if (choice === 1) {
           currentLevel = 2;
-          title.innerText = "Stage 2: Emergency Protocol";
-          description.innerText = "When life gets stressful or boring, what is Tamanna's ultimate survival move?";
+          title.innerText = "Stage 2: Priority Protocols";
+          description.innerText = "What is the official rule for handling stress or bad mood?";
           area.innerHTML = `
-            <button onclick="nextLevel(1)">[A] Good food, gossips, & zero drama</button>
-            <button onclick="nextLevel(0)">[B] Overthinking & studying calculus</button>
+            <button onclick="nextLevel(1)">[A] Good food, cold coffee & quality drama</button>
+            <button onclick="nextLevel(0)">[B] Overthinking at 2 AM</button>
           `;
           feedback.style.color = "#3fb950";
-          feedback.innerText = "> Stage 1 bypassed. Access level updated.";
+          feedback.innerText = "> Level 1 Cleared. Proceeding to next layer...";
         } else {
           feedback.style.color = "#f85149";
-          feedback.innerText = "> Error: Invalid input. Try being honest!";
+          feedback.innerText = "> Access Denied. Choose correctly!";
         }
       } 
       else if (currentLevel === 2) {
         if (choice === 1) {
           currentLevel = 3;
-          title.innerText = "Stage 3: Decision Matrix";
-          description.innerText = "Final Step: Choose your reward for clearing the system security.";
+          title.innerText = "Stage 3: Reward Matrix";
+          description.innerText = "Final Step: Select your preferred reward pass.";
           area.innerHTML = `
-            <button onclick="nextLevel(1)">[A] Coffee/Dessert date paid by me</button>
-            <button onclick="nextLevel(2)">[B] Unlimited tea/gossip session</button>
+            <button onclick="nextLevel(1)">[A] Coffee or Dessert date on me</button>
+            <button onclick="nextLevel(2)">[B] Coffee / Dessert + Gossip Session</button>
           `;
           feedback.style.color = "#3fb950";
-          feedback.innerText = "> Security override almost complete...";
+          feedback.innerText = "> Almost decrypted...";
         } else {
           feedback.style.color = "#f85149";
-          feedback.innerText = "> Access Denied: Incorrect protocol.";
+          feedback.innerText = "> Invalid choice. Overthinking is strictly prohibited!";
         }
       }
       else if (currentLevel === 3) {
         document.getElementById("badge").innerText = "ACCESS GRANTED";
         document.getElementById("badge").style.background = "#8957e5";
         
-        title.innerText = "Tamanna's Clearance Pass 🏆";
-        description.innerText = "System successfully decrypted.";
+        title.innerText = "Samiksha's Clearance Pass 🏆";
+        description.innerText = "Security protocol successfully bypassed.";
         area.innerHTML = `
           <div style="background: #0d1117; padding: 15px; border-radius: 6px; border: 1px solid #30363d; text-align: left;">
-            <strong style="color: #79c0ff;">Reward Claim Code: #TAMANNA-VIP</strong><br><br>
-            <span style="color: #c9d1d9; font-size: 0.9rem;">1x Guaranteed treat/hangout pass unlocked.</span><br><br>
-            <em style="color: #8b949e; font-size: 0.85rem;">*Send a screenshot of this terminal to claim.*</em>
+            <strong style="color: #79c0ff;">Claim Code: #SAMIKSHA-VIP</strong><br><br>
+            <span style="color: #c9d1d9; font-size: 0.9rem;">1x Coffee or Dessert Session Unlocked.</span><br><br>
+            <em style="color: #8b949e; font-size: 0.85rem;">*Send a screenshot of this screen to claim.*</em>
           </div>
         `;
         feedback.style.color = "#3fb950";
-        feedback.innerText = "> Terminal Unlocked 100%.";
+        feedback.innerText = "> System Unlocked 100%.";
       }
     }
   </script>
